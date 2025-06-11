@@ -77,7 +77,7 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
 
   @GestureState private var isCurrentlyDragging: Bool = false
 
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
       content
         .offset(x: offset)
         .contentShape(.rect)
