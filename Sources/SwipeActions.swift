@@ -34,10 +34,24 @@ import SwiftUI
 // MARK: - SwipeAction Model
 public struct ApolloSwipeAction {
   let color: Color
-  var foregroundColor: Color = .white
+  let foregroundColor: Color
   let icon: String
-  var font: Font = .title
+  let font: Font
   let action: () -> Void
+
+  public init(
+    color: Color = .accentColor, 
+    foregroundColor: Color = .primary, 
+    icon: String, 
+    font: Font = .title, 
+    action: () -> Void
+  ) {
+    self.color = color
+    self.foregroundColor = foregroundColor
+    self.icon = icon
+    self.font = font
+    self.action = action
+  }
 }
 
 // MARK: - Swipe Gesture Modifier
