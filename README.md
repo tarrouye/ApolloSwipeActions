@@ -3,7 +3,7 @@ Add customizable Apollo-style swipe actions to any SwiftUI view.
 - Enable swipe actions on any view, not just list rows.
 - Customize colors, icons, fonts, corner radius, spacing, etc...
 - Default behavior inspired by the Apollo for Reddit app
-- Made with 100% SwiftUI. Supports iOS 14+.
+- Made with 100% SwiftUI. Supports iOS 15+.
 
 
 ### Installation
@@ -66,7 +66,8 @@ struct ContentView: View {
 }
 ```
 
-// Add video here
+https://github.com/user-attachments/assets/f75bc0a0-404d-40ef-9680-6265ae012a60
+
 
 ### Customization
 
