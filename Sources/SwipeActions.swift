@@ -124,7 +124,7 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
               }
             }
             .onEnded { value in
-              let shouldTrigger = abs(offset) > triggerDistance && isCurrentlyDragging
+              let shouldTrigger = abs(offset) > triggerDistance
 
               if shouldTrigger {
                 // Trigger appropriate action
