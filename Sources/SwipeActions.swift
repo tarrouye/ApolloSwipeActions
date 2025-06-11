@@ -40,10 +40,10 @@ public struct ApolloSwipeAction {
   let action: () -> Void
 
   public init(
-    color: Color = .accentColor, 
-    foregroundColor: Color = .primary, 
-    icon: String, 
-    font: Font = .title, 
+    color: Color = .accentColor,
+    foregroundColor: Color = .primary,
+    icon: String,
+    font: Font = .title,
     action: @escaping () -> Void
   ) {
     self.color = color
@@ -81,7 +81,7 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
       content
         .offset(x: offset)
         .contentShape(.rect)
-        .simultaneousGesture(
+        .highPriorityGesture(
           DragGesture(minimumDistance: minDragDistance)
             .updating($isCurrentlyDragging) { value, state, _ in
               // Only start dragging if the gesture moves more horizontally than vertically
@@ -91,7 +91,6 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
               }
             }
             .onChanged { value in
-              
               let translation = value.translation.width
 
               // Only allow swipe if we have an action for that direction
@@ -112,7 +111,7 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
               isTriggered = abs(offset) > triggerDistance
               if isTriggered, !wasTriggered {
                 Self.selectionFeedbackGenerator.selectionChanged()
-                
+
                 withAnimation(.easeIn(duration: 0.15)) {
                   isBouncingIcon = true
                 }
@@ -125,7 +124,7 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
               }
             }
             .onEnded { value in
-              let shouldTrigger = abs(offset) > triggerDistance
+              let shouldTrigger = abs(offset) > triggerDistance && isCurrentlyDragging
 
               if shouldTrigger {
                 // Trigger appropriate action
