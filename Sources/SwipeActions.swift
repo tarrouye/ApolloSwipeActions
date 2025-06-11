@@ -44,7 +44,7 @@ public struct ApolloSwipeAction {
     foregroundColor: Color = .primary, 
     icon: String, 
     font: Font = .title, 
-    action: () -> Void
+    action: @escaping () -> Void
   ) {
     self.color = color
     self.foregroundColor = foregroundColor
