@@ -134,15 +134,18 @@ public struct ApolloSwipeActionsModifier: ViewModifier {
                   trailingAction?.action()
                 }
               }
-
-              // Reset state
-              withAnimation(.spring(duration: 0.3)) {
-                offset = 0
-              }
-              lockedDirection = 0
-              isTriggered = false
             }
         )
+        .onChange(of: isCurrentlyDragging) {
+          if !$0 {
+            // Reset state
+            withAnimation(.spring(duration: 0.3)) {
+              offset = 0
+            }
+            lockedDirection = 0
+            isTriggered = false
+          }
+        }
         .background {
           let fullPeek = min(50, triggerDistance)
           let peekScale = min(1, abs(offset) / fullPeek)
